@@ -1,0 +1,44 @@
+catch { setDesignMode -process 90 }
+catch { setAnalysisMode -analysisType single }
+catch { setAnalysisMode -asyncChecks async }
+catch { setAnalysisMode -checkType setup }
+catch { setAnalysisMode -clkSrcPath true }
+catch { setAnalysisMode -clockPropagation sdcControl }
+catch { setAnalysisMode -skew true }
+catch { setAnalysisMode -usefulSkew true }
+catch { setAnalysisMode -virtualIPO false }
+catch { setOptMode -activeHoldViews { aes_av  } }
+catch { setOptMode -activeSetupViews { aes_av } }
+catch { setOptMode -autoHoldViews { aes_av } }
+catch { setOptMode -autoSetupViews { aes_av} }
+catch { setOptMode -autoTDGRSetupViews { aes_av} }
+catch { setOptMode -autoViewHoldTargetSlack 0 }
+catch { setOptMode -drcMargin 0 }
+catch { setOptMode -fixDrc true }
+catch { setOptMode -optimizeFF true }
+catch { setOptMode -setupTargetSlack 0 }
+setExtractRCMode  -effortLevel low -engine postRoute -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.2 -minNetTermNrToBeInMem 50
+catch { setCTSMode -engine ck }
+catch {setNanoRouteMode -quiet -drouteAutoStop false}
+catch {setNanoRouteMode -quiet -drouteFixAntenna false}
+catch {setNanoRouteMode -quiet -extractThirdPartyCompatible false}
+catch {setNanoRouteMode -quiet -grouteExpTdStdDelay 32.900000}
+catch {setNanoRouteMode -quiet -routeBottomRoutingLayer 1}
+catch {setNanoRouteMode -quiet -routeInsertAntennaDiode false}
+catch {setNanoRouteMode -quiet -routeSiEffort "medium"}
+catch {setNanoRouteMode -quiet -routeTopRoutingLayer 5}
+catch {setNanoRouteMode -quiet -routeUseBlockageForAutoGgrid true}
+catch {setNanoRouteMode -quiet -routeWithSiDriven true}
+catch {setNanoRouteMode -quiet -routeWithSiPostRouteFix false}
+catch {setNanoRouteMode -quiet -routeWithTimingDriven true}
+
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepFlatten true }
+catch { setUsefulSkewMode -ecoRoute false }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -eng_copyNetPropToNewNet true }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setSIMode -separate_delta_delay_on_data true }
+catch { setRouteMode -earlyGlobalRouteSecondPG false }
+catch { setFPlanMode -maxIoHeight false }
+catch { setFPlanMode -powerRailLayer {} }

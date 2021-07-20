@@ -1,0 +1,9 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+create_rc_corner -name nangate45nm_caps -cap_table {/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Back_End/captables/NCSU_FreePDK_45nm.capTbl} -T {125} -preRoute_res {1.0} -preRoute_cap {1.0} -preRoute_clkres {0.0} -preRoute_clkcap {0.0} -postRoute_res {1.0} -postRoute_cap {1.0} -postRoute_xcap {1.0} -postRoute_clkres {0.0} -postRoute_clkcap {0.0}
+create_op_cond -name PVT -library_file {/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/NLDM/NangateOpenCellLibrary_slow.lib} -P {1} -V {1.05} -T {125}
+create_library_set -name nangate45nm_ls -timing {/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/Liberty/NLDM/NangateOpenCellLibrary_slow.lib}
+create_constraint_mode -name aes_cm -sdc_files {inputs/aes128key.sdc}
+create_delay_corner -name nangate45nm_dc -library_set {nangate45nm_ls} -rc_corner {nangate45nm_caps}
+create_analysis_view -name aes_av -constraint_mode {aes_cm} -delay_corner {nangate45nm_dc}
+set_analysis_view -setup {aes_av} -hold {aes_av}
